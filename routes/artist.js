@@ -8,8 +8,6 @@ router.get('/', function(req,res) {
     if(err) console.log(err);
     res.render('templates/index',
               { artists : artists });
-    console.log('req.url:',req.url);
-    console.log('artists:',artists);
   });
 });
 
