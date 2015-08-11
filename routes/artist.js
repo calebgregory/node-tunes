@@ -44,7 +44,7 @@ router.post('/:_id/delete', function(req,res) {
     function(err,result) {
       if (err) console.log(err);
       console.log(result);
-      res.send('omg deleted');
+      res.redirect('/artists');
     });
 });
 
