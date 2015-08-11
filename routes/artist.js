@@ -34,12 +34,18 @@ router.get('/search', function(req,res) {
 });
 
 router.get('/:_id', function(req,res) {
-  var _id = ObjectID(req.params._id)
-    , coll = global.db.collection('artist');
-  coll.findOne({ _id : _id },
+  var _id = req.params._id
+    , artists = global.db.collection('artist')
+    , albums = global.db.collection('album');
+  artists.findOne({ _id : ObjectID(_id) },
     function(err,artist) {
-      res.render('templates/artist',
-                { artist : artist });
+      albums.find({ artistId : ObjectID(_id) })
+        .toArray(function(err,matches) {
+          artist.albums = matches;
+          res.render('templates/artist',
+                    { artist : artist });
+
+        });
     });
 });
 
@@ -48,7 +54,6 @@ router.get('/:_id/edit', function(req,res) {
     , coll = global.db.collection('artist');
   coll.findOne({ _id : _id },
     function(err,artist) {
-      console.log(artist);
       res.render('templates/artist-edit',
                 { artist : artist });
     });

@@ -7,9 +7,17 @@
   <body>
     <h1> name : <%= artist.name %> </h1>
     <h3> genre : <%= artist.genre %> </h3>
-    <h5>
-      <a href="<%= artist.wiki %>">wiki</a>
-    </h5>
+    <h5> <a href="<%= artist.wiki %>">wiki</a> </h5>
+    <h3> albums : </h3>
+    <div class="album-container">
+      <% artist.albums.forEach(function(album) { %>
+      <p>
+        <a href="/artists/<%= artist._id %>/album/<%= album._id %>">
+          <%= album.name %>
+        </a>
+      </p>
+      <% }); %>
+    </div>
     <a href='/artists'>back</a>
   </body>
 </html>
