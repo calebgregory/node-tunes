@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <title> <%= title %> </title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  </head>
+  <body>
+    <h1> add album </h1>
+
+    <div class="artist-search">
+      <form action="">
+        <input type="text"
+               placeholder="artist name">
+        <input type="submit" value="search">
+      </form>
+    </div>
+
+    <div class="artist-matches">
+      <form action="/album/add"
+            method="POST">
+        <label for="selected-artist">search results</label>
+        <div>
+          <select id="selected-artist" name="artist">
+          </select>
+        </div>
+        <div>
+          <label for="album-name">album name :</label>
+          <input type="text"
+                 name="album-name"
+                 placeholder="album name">
+        </div>
+        <input type="submit" value="add album">
+      </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    <script src="/js/album.add.js"></script>
+  </body>
+</html>
