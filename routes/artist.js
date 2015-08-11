@@ -13,10 +13,6 @@ router.get('/', function(req,res) {
   });
 });
 
-router.get('/add', function(req,res) {
-  res.render('templates/artist-add');
-});
-
 router.post('/', function(req,res) {
   var coll = global.db.collection('artist')
     , artist = req.body;
@@ -24,6 +20,10 @@ router.post('/', function(req,res) {
     function(err,result) {
       res.redirect('/artists');
     });
+});
+
+router.get('/add', function(req,res) {
+  res.render('templates/artist-add');
 });
 
 router.get('/:_id', function(req,res) {

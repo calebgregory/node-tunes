@@ -11,6 +11,8 @@ var index = require(path.join(process.cwd(),
                              '/routes/index'));
 var artist = require(path.join(process.cwd(),
                               '/routes/artist'));
+var album = require(path.join(process.cwd(),
+                             '/routes/album'));
 
 var app = express();
 if(process.env.NODE_ENV !== 'production') {
@@ -34,6 +36,8 @@ var logStream = fs.createWriteStream(
 app.use(morgan('combined', {stream:logStream}));
 app.use(morgan('dev'));
 
+app.use(express.static('public'));
+
 app.use(bodyParser.urlencoded({
   extended : true,
   type     : '*/x-www-form-urlencoded'
@@ -42,6 +46,7 @@ app.use(bodyParser.urlencoded({
 
 app.use('/', index);
 app.use('/artists', artist);
+app.use('/album', album);
 
 
 app.use(function(req,res,next) {
