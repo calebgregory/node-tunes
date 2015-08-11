@@ -75,8 +75,23 @@ router.post('/:_id/delete', function(req,res) {
   coll.remove({ _id : _id },
     function(err,result) {
       if (err) console.log(err);
-      console.log(result);
       res.redirect('/artists');
+    });
+});
+
+router.get('/:artistId/album/:albumId', function(req,res) {
+  var albums = global.db.collection('album')
+    , artists = global.db.collection('artist')
+    , artistId = req.params.artistId
+    , albumId = req.params.albumId;
+  albums.findOne({ _id : ObjectID(albumId) },
+    function(err, album) {
+      artists.findOne({ _id : ObjectID(artistId) },
+        function(err, artist) {
+          album.artist = artist;
+          res.render('templates/album',
+                    { album : album });
+        });
     });
 });
 

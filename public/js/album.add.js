@@ -31,10 +31,3 @@ function updateMatches(matches) {
   });
 
 };
-
-$('#selected-artist')
-  .children()
-  .on('click', function(e) {
-    console.log(this.val());
-    e.preventDefault();
-  });

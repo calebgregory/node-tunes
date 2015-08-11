@@ -15,7 +15,10 @@ router.post('/add', function(req,res) {
     };
   coll.save(album,
     function(err, result) {
-      res.redirect('/artists');
+      var artistId = result.ops[0].artistId
+        , albumId = result.ops[0]._id;
+      res.redirect('/artists/'+artistId+
+                   '/album/'+albumId);
     });
 });
 
