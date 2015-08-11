@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+  <head>
+    <title> <%= title %> </title>
+  </head>
+  <body>
+    <h1> edit <%= artist.name %> </h1>
+    <form action='/artists/:id/edit'
+          method='POST'>
+      name : <input type="text"
+                    name="name"
+                    value="<%= artist.name %>">
+      genre : <input type="text"
+                     name="genre"
+                     value="<%= artist.genre %>">
+      wiki : <input type="text"
+                    name="wiki"
+                    value="<%= artist.wiki %>">
+      <input type="submit" value="submit">
+    </form>
+  </body>
+</html>

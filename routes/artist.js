@@ -26,16 +26,41 @@ router.post('/', function(req,res) {
     });
 });
 
-router.get('/:_id/edit', function(req,res) {
-  console.log('req.params',req.params);
-  res.render('templates/artist-edit');
+router.get('/:_id', function(req,res) {
+  var _id = ObjectID(req.params._id)
+    , coll = global.db.collection('artist');
+  coll.findOne({ _id : _id },
+    function(err,artist) {
+      res.render('templates/artist',
+                { artist : artist });
+    });
 });
 
-// in order to delete, we need to have access to
-// our unique identifier for each item.
-// if we want to access it this way, we have to
-// pass in the item's _id to some element in the
-// html.
+router.get('/:_id/edit', function(req,res) {
+  var _id = ObjectID(req.params._id)
+    , coll = global.db.collection('artist');
+  coll.findOne({ _id : _id },
+    function(err,artist) {
+      console.log(artist);
+      res.render('templates/artist-edit',
+                { artist : artist });
+    });
+});
+
+router.post('/:_id/edit', function(req,res) {
+  var _id = ObjectID(req.params._id)
+    , artist = res.body
+    , coll = global.db.collection('artist');
+  coll.update({ _id : _id },
+    { $set : {
+      "name"  : artist.name ,
+      "genre" : artist.genre,
+      "wiki"  : artist.wiki
+    } },
+    function(err,artist) {
+      res.render('/artists/'+req.params._id);
+    });
+});
 
 router.post('/:_id/delete', function(req,res) {
   var coll = global.db.collection('artist')

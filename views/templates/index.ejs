@@ -19,7 +19,11 @@
       <tbody>
       <% artists.forEach(function(artist) { %>
         <tr>
-          <td><%= artist.name %></td>
+          <td>
+            <a href="/artists/<%= artist._id %>">
+              <%= artist.name %>
+            </a>
+          </td>
           <td><%= artist.genre %></td>
           <td><%= artist.wiki %></td>
           <td>
