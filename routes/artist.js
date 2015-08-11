@@ -26,6 +26,15 @@ router.get('/add', function(req,res) {
   res.render('templates/artist-add');
 });
 
+router.get('/search', function(req,res) {
+  var coll = global.db.collection('artist')
+    , query = new RegExp(req.query.name,"i");
+  coll.find({ name : query })
+    .toArray(function(err,matches) {
+      res.send(matches);
+    });
+});
+
 router.get('/:_id', function(req,res) {
   var _id = ObjectID(req.params._id)
     , coll = global.db.collection('artist');
