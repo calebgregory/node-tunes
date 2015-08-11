@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <title> <%= title %> </title>
+  </head>
+  <body>
+    <h1> hello </h1>
+    <a href="/artists">back</a>
+    <form action="/artists"
+          method="POST">
+      name: <input type="text"
+                   name="name"
+                   placeholder="name">
+      genre: <input type="text"
+                    name="genre"
+                    placeholder="genre">
+      wiki: <input type="url"
+                   name="wiki"
+                   placeholder="wikipedia.org/">
+      <input type="submit" value="submit">
+    </form>
+  </body>
+</html>

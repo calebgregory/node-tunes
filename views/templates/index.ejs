@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <title> <%= title %> </title>
+  </head>
+  <body>
+    <h1> artists </h1>
+    <a href="/artists/add">add</a>
+    <table>
+      <thead>
+        <tr>
+          <th>Artist</th>
+          <th>Genre</th>
+          <th>Wiki</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% artists.forEach(function(artist) { %>
+        <tr>
+          <td><%= artist.name %></td>
+          <td><%= artist.genre %></td>
+          <td><%= artist.wiki %></td>
+          <td>
+            <form action="/artists/<%= artist._id %>/edit"
+                  method="GET">
+              <input type="submit" value="edit">
+            </form>
+          </td>
+          <td>
+            <form action="/artists/<%= artist._id %>/delete"
+                  method="POST">
+              <input type="submit" value="delete">
+            </form>
+          </td>
+        </tr>
+      <% }); %>
+      </tbody>
+    </table>
+
+  </body>
+</html>
