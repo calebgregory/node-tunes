@@ -61,17 +61,15 @@ router.get('/:_id/edit', function(req,res) {
 });
 
 router.post('/:_id/edit', function(req,res) {
-  var _id = ObjectID(req.params._id)
-    , artist = res.body
-    , coll = global.db.collection('artist');
-  coll.update({ _id : _id },
-    { $set : {
-      "name"  : artist.name ,
-      "genre" : artist.genre,
-      "wiki"  : artist.wiki
-    } },
+
+  var updatedArtist = req.body;
+  Artist.findById(req.params._id,
     function(err,artist) {
-      res.render('/artists/'+req.params._id);
+      if(err) console.log(err);
+      artist.update(updatedArtist,
+        function(err,artist) {
+          res.redirect('/artists/'+req.params._id);
+        });
     });
 });
 

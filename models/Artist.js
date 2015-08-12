@@ -1,4 +1,4 @@
-var ObjectID = require('mongodb').ObjectId
+var ObjectID = require('mongodb').ObjectID
   , _ = require('lodash');
 
 function Artist(a) {
@@ -17,10 +17,22 @@ Artist.prototype.save = function(cb) {
   Artist.collection.save(this,cb);
 };
 
+Artist.prototype.update = function(updatedArtist,cb) {
+  Artist.collection.update({ _id : this._id },
+    { $set : {
+      "name"  : updatedArtist.name ,
+      "genre" : updatedArtist.genre,
+      "wiki"  : updatedArtist.wiki
+    } },
+    cb);
+};
+
 Artist.findById = function(id,cb) {
   Artist.collection.findOne(
     { _id : ObjectID(id) },
-    cb);
+    function(err,artist) {
+      cb(err,prototyped(artist))
+    });
 };
 
 Artist.findByName = function(query,cb) {

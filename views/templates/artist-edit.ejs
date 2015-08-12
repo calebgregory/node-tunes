@@ -6,7 +6,7 @@
   </head>
   <body>
     <h1> edit <%= artist.name %> </h1>
-    <form action='/artists/:id/edit'
+    <form action='/artists/<%= artist._id %>/edit'
           method='POST'>
       name : <input type="text"
                     name="name"
