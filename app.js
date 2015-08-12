@@ -72,4 +72,5 @@ var server = app.listen(port, function() {
   var host = server.address().address;
   var port = server.address().port;
   console.log('App: I\'m listening');
+  console.log('@ http://localhost:3000');
 });
