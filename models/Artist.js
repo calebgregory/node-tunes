@@ -20,9 +20,9 @@ Artist.prototype.save = function(cb) {
 Artist.prototype.update = function(updatedArtist,cb) {
   Artist.collection.update({ _id : this._id },
     { $set : {
-      "name"  : updatedArtist.name ,
-      "genre" : updatedArtist.genre,
-      "wiki"  : updatedArtist.wiki
+      'name'  : updatedArtist.name ,
+      'genre' : updatedArtist.genre,
+      'wiki'  : updatedArtist.wiki
     } },
     cb);
 };
