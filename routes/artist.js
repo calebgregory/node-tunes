@@ -1,10 +1,13 @@
 var express = require('express');
-var router = express.Router();
 var ObjectID = require('mongodb').ObjectID;
+var path = require('path');
+
+var Artist = require(path.join(process.cwd(),
+                             '/models/Artist'));
+var router = express.Router();
 
 router.get('/', function(req,res) {
-  var coll = global.db.collection('artist');
-  coll.find().toArray(function(err,artists) {
+  Artist.findAll(function(err,artists) {
     if(err) console.log(err);
     res.render('templates/index',
               { artists : artists });
@@ -12,12 +15,12 @@ router.get('/', function(req,res) {
 });
 
 router.post('/', function(req,res) {
-  var coll = global.db.collection('artist')
-    , artist = req.body;
-  coll.save(artist,
-    function(err,result) {
-      res.redirect('/artists');
-    });
+  var artist = new Artist(req.body);
+  artist.save(function(err) {
+    if(err) console.log(err);
+    res.redirect('/artists');
+  });
+
 });
 
 router.get('/add', function(req,res) {
@@ -25,12 +28,11 @@ router.get('/add', function(req,res) {
 });
 
 router.get('/search', function(req,res) {
-  var coll = global.db.collection('artist')
-    , query = new RegExp(req.query.name,"i");
-  coll.find({ name : query })
-    .toArray(function(err,matches) {
-      res.send(matches);
-    });
+  var query = new RegExp(req.query.name,"i");
+  Artist.findByName(query, function(err,matches) {
+    if(err) console.log(err);
+    res.send(matches);
+  });
 });
 
 router.get('/:_id', function(req,res) {
