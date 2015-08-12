@@ -17,6 +17,12 @@ Artist.prototype.save = function(cb) {
   Artist.collection.save(this,cb);
 };
 
+Artist.findById = function(id,cb) {
+  Artist.collection.findOne(
+    { _id : ObjectID(id) },
+    cb);
+};
+
 Artist.findByName = function(query,cb) {
   Artist.collection.find({ name : query })
     .toArray(cb);

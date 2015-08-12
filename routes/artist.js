@@ -52,13 +52,12 @@ router.get('/:_id', function(req,res) {
 });
 
 router.get('/:_id/edit', function(req,res) {
-  var _id = ObjectID(req.params._id)
-    , coll = global.db.collection('artist');
-  coll.findOne({ _id : _id },
-    function(err,artist) {
-      res.render('templates/artist-edit',
-                { artist : artist });
-    });
+  var _id = req.params._id;
+  Artist.findById(_id, function(err,artist) {
+    if(err) console.log(err);
+    res.render('templates/artist-edit',
+              { artist : artist });
+  });
 });
 
 router.post('/:_id/edit', function(req,res) {
