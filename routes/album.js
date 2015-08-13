@@ -11,7 +11,7 @@ router.get('/add', function(req,res) {
   res.render('templates/album-add');
 });
 
-router.post('/add', function(req,res) {
+router.post('/', function(req,res) {
   var album = new Album(req.body);
   album.save(function(err,result) {
     var artistId = result.ops[0].artistId
