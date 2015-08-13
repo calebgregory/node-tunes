@@ -54,8 +54,7 @@ Artist.findAll = function(cb) {
           return prototyped(artist);
         });
       cb(err, prototypedArtists);
-    }
-  );
+    });
 };
 
 module.exports = Artist;

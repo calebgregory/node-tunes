@@ -19,7 +19,7 @@ Album.prototype.save = function(cb) {
 Album.findById = function(id,cb) {
   Album.collection.findOne(
     { _id : ObjectID(id) },
-    cb)
+    cb);
 };
 
 Album.findByArtistId = function(id,cb) {
