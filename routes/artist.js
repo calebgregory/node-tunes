@@ -4,6 +4,9 @@ var path = require('path');
 
 var Artist = require(path.join(process.cwd(),
                              '/models/Artist'));
+var Album = require(path.join(process.cwd(),
+                             '/models/Album'));
+
 var router = express.Router();
 
 router.get('/', function(req,res) {
