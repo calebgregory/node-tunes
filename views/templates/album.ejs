@@ -4,11 +4,12 @@
   <body>
     <h1>
       artist : <a
-        href="/artist/album.artistId">
+        href="/artists/<%= album.artistId %>">
         <%= album.artist.name %>
       </a>
     </h1>
     <h2> album : <%= album.name %> </h2>
+    <a href="/artists/<%= album.artistId %>">back</a>
     <a href="/">main page</a>
   </body>
 </html>

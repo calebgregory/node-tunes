@@ -83,6 +83,30 @@ router.post('/:_id/delete', function(req,res) {
     });
 });
 
+router.get('/:_id/album/add', function(req,res) {
+  Artist.findById(req.params._id,
+    function(err,artist) {
+      if (err) console.log(err);
+      console.log(artist);
+      res.render('templates/artist-album-add',
+                { artist : artist });
+    });
+});
+
+router.post('/:_id/album/add', function(req,res) {
+  Artist.findById(req.params._id,
+    function(err,artist) {
+      if (err) console.log(err);
+      var album = new Album(req.body);
+      album.artistId = artist._id;
+      album.save(function(err,result) {
+        var albumId = result.ops[0]._id;
+        res.redirect('/artists/'+req.params._id+
+                     '/album/'+albumId);
+      });
+    });
+});
+
 router.get('/:artistId/album/:albumId', function(req,res) {
   var artistId = req.params.artistId
     , albumId = req.params.albumId;
