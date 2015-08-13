@@ -14,12 +14,23 @@ router.get('/add', function(req,res) {
 router.post('/', function(req,res) {
   var album = new Album(req.body);
   album.save(function(err,result) {
-    var artistId = result.ops[0].artistId
-      , albumId = result.ops[0]._id;
-    res.redirect('/artists/'+artistId+
-                 '/album/'+albumId);
+    var albumId = result.ops[0]._id;
+    res.redirect('/album/'+albumId);
   });
 });
+
+router.get('/:_id', function(req,res) {
+  Album.findById(req.params._id,
+    function(err,album) {
+    Artist.findById(album.artistId,
+      function(err, artist) {
+        album.artist = artist;
+        res.render('templates/album',
+                  { album : album });
+      });
+    });
+});
+
 
 router.post('/add/:artistId', function(req,res) {
   Artist.findById(req.params.artistId,

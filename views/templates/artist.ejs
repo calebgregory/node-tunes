@@ -9,13 +9,13 @@
     <div class="album-container">
       <% artist.albums.forEach(function(album) { %>
       <p>
-        <a href="/artists/<%= artist._id %>/album/<%= album._id %>">
+        <a href="/album/<%= album._id %>">
           <%= album.name %>
         </a>
       </p>
       <% }); %>
     </div>
-    <a href='/artists/<%= artist._id %>/album/add'>add album</a>
+    <a href='/artists/<%= artist._id %>/addalbum'>add album</a>
     <a href='/artists'>back</a>
   </body>
 </html>
