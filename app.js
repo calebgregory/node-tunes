@@ -47,6 +47,7 @@ app.use(bodyParser.urlencoded({
 app.use('/', index);
 app.use('/artists', artist);
 app.use('/album', album);
+app.use(express.static('www'));
 
 
 app.use(function(req,res,next) {

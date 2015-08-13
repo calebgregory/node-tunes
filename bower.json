@@ -1,0 +1,21 @@
+{
+  "name": "node-tunes",
+  "version": "1.0.0",
+  "homepage": "https://github.com/calebgregory/node-tunes",
+  "authors": [
+    "calebgregory <calebgregory@gmail.com>"
+  ],
+  "main": "app.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "pure": "~0.6.0"
+  }
+}
