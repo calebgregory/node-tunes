@@ -16,6 +16,12 @@ Album.prototype.save = function(cb) {
   Album.collection.save(this,cb);
 };
 
+Album.findById = function(id,cb) {
+  Album.collection.findOne(
+    { _id : ObjectID(id) },
+    cb)
+};
+
 Album.findByArtistId = function(id,cb) {
   Album.collection.find(
     { artistId : ObjectID(id) }
