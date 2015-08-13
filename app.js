@@ -1,6 +1,7 @@
 var bodyParser = require('body-parser');
 var express = require('express');
 var fs = require('fs');
+var lessCSS = require('less-middleware');
 var morgan = require('morgan');
 var path = require('path');
 
@@ -29,6 +30,8 @@ app.set('case sensitive routing', true);
 
 app.locals.title = 'nodeTunes';
 
+
+app.use(lessCSS('www'));
 
 var logStream = fs.createWriteStream(
   'access.log',

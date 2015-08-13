@@ -21,6 +21,7 @@
     "chalk": "^1.1.0",
     "ejs": "^2.3.3",
     "express": "^4.13.3",
+    "less-middleware": "^2.0.1",
     "lodash": "^3.10.1",
     "mongodb": "^2.0.40",
     "morgan": "^1.6.1"

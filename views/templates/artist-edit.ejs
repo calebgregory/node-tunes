@@ -1,9 +1,6 @@
 <!doctype html>
 <html>
-  <head>
-    <title> <%= title %> </title>
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-  </head>
+  <%- include('head', { page : artist.name }); %>
   <body>
     <h1> edit <%= artist.name %> </h1>
     <form action='/artists/<%= artist._id %>/edit'
