@@ -39,17 +39,15 @@ router.get('/search', function(req,res) {
 });
 
 router.get('/:_id', function(req,res) {
-  var _id = req.params._id
-    , artists = global.db.collection('artist')
-    , albums = global.db.collection('album');
-  artists.findOne({ _id : ObjectID(_id) },
+  Artist.findById(req.params._id,
     function(err,artist) {
-      albums.find({ artistId : ObjectID(_id) })
-        .toArray(function(err,matches) {
-          artist.albums = matches;
+      if(err) console.log(err);
+      Album.findByArtistId(artist._id,
+        function(err,albums){
+          if(err) console.log(err);
+          artist.albums = albums;
           res.render('templates/artist',
                     { artist : artist });
-
         });
     });
 });

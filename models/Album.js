@@ -16,6 +16,12 @@ Album.prototype.save = function(cb) {
   Album.collection.save(this,cb);
 };
 
+Album.findByArtistId = function(id,cb) {
+  Album.collection.find(
+    { artistId : ObjectID(id) }
+  ).toArray(cb);
+};
+
 module.exports = Album;
 
 function prototyped(pojo) {
