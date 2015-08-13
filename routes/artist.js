@@ -61,7 +61,6 @@ router.get('/:_id/edit', function(req,res) {
 });
 
 router.post('/:_id/edit', function(req,res) {
-
   var updatedArtist = req.body;
   Artist.findById(req.params._id,
     function(err,artist) {
@@ -74,12 +73,12 @@ router.post('/:_id/edit', function(req,res) {
 });
 
 router.post('/:_id/delete', function(req,res) {
-  var coll = global.db.collection('artist')
-    , _id = ObjectID(req.params._id);
-  coll.remove({ _id : _id },
-    function(err,result) {
-      if (err) console.log(err);
-      res.redirect('/artists');
+  Artist.findById(req.params._id,
+    function(err,artist) {
+      artist.remove(function(err) {
+        if (err) console.log(err);
+        res.redirect('/artists');
+      });
     });
 });
 

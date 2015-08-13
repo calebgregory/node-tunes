@@ -27,6 +27,12 @@ Artist.prototype.update = function(updatedArtist,cb) {
     cb);
 };
 
+Artist.prototype.remove = function(cb) {
+  Artist.collection.remove(
+    { _id : this._id },
+    cb);
+};
+
 Artist.findById = function(id,cb) {
   Artist.collection.findOne(
     { _id : ObjectID(id) },
