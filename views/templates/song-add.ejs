@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <%- include('head', { page : 'add song' }); %>
+  <body>
+    <h1><%= album.artist.name %></h1>
+    <h3><%= album.name %></h3>
+    <form action="/song/add/<%= album._id %>"
+          method="POST">
+      <input type="text"
+             name="name"
+             placeholder="song name">
+      <input type="submit" value="submit">
+    </form>
+  </body>
+</html>
