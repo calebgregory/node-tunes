@@ -55,7 +55,7 @@ router.get('/:_id/addsong', function(req,res) {
         function(err, artist) {
           album.artist = artist;
           res.render('templates/song-add',
-                    { artist : artist });
+                    { album : album });
         });
     });
 });
