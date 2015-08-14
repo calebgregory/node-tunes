@@ -3,7 +3,7 @@ var ObjectID = require('mongodb').ObjectID
 
 function Song(s) {
   this.name     = s.name;
-  this.albumId  = s.albumId
+  this.albumId  = ObjectID(s.albumId);
 }
 
 Object.defineProperty(Song, 'collection', {

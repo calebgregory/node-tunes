@@ -2,7 +2,9 @@ var ObjectID = require('mongodb').ObjectID
   , _ = require('lodash')
   , path = require('path')
   , Artist = require(path.join(process.cwd(),
-                              '/models/Artist'));
+                              '/models/Artist'))
+  , Song = require(path.join(process.cwd(),
+                            '/models/Song'));
 
 function Album(a) {
   this.name     = a['album-name'];
@@ -23,6 +25,13 @@ Album.prototype.getArtist = function(cb) {
   Artist.collection.findOne(
     { _id : ObjectID(this.artistId) },
     cb);
+};
+
+Album.prototype.getSongs = function(cb) {
+  console.log(this);
+  Song.collection.find(
+    { 'albumId' : ObjectID(this._id) }
+  ).toArray(cb);
 };
 
 Album.findById = function(id,cb) {

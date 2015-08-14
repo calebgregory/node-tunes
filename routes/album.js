@@ -26,8 +26,13 @@ router.get('/:_id', function(req,res) {
       album.getArtist(
         function(err, artist) {
           album.artist = artist;
-          res.render('templates/album',
-                    { album : album });
+          album.getSongs(
+            function(err,songs) {
+              console.log(songs);
+              album.songs = songs;
+              res.render('templates/album',
+                        { album : album });
+            });
         });
     });
 });
