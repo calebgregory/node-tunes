@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <%- include('head', { page : artist.name+ " add album" }) %>
+  <body>
+    <h1> <%= artist.name %> </h1>
+    <h2>add album</h2>
+    <form action="/album/add/<%= artist._id %>"
+          method="POST">
+      <div>
+        <label for="album-name">album name :</label>
+        <input type="text"
+               name="album-name"
+               placeholder="album name">
+      </div>
+      <input type="submit" value="submit">
+    </form>
+    <a href="/artists/<%= artist._id %>">back</a>
+  </body>
+</html>
