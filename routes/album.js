@@ -8,7 +8,7 @@ var Album = require(path.join(process.cwd(),
 var router = express.Router();
 
 router.get('/add', function(req,res) {
-  res.render('templates/album-add');
+  res.render('album/add');
 });
 
 router.post('/', function(req,res) {
@@ -28,9 +28,8 @@ router.get('/:_id', function(req,res) {
           album.artist = artist;
           album.getSongs(
             function(err,songs) {
-              console.log(songs);
               album.songs = songs;
-              res.render('templates/album',
+              res.render('album/index',
                         { album : album });
             });
         });
@@ -42,7 +41,6 @@ router.post('/add/:artistId', function(req,res) {
   Artist.findById(req.params.artistId,
     function(err,artist) {
       if (err) console.log(err);
-      console.log(artist);
       var album = new Album(req.body);
       album.artistId = artist._id;
       album.save(function(err,result) {
@@ -59,7 +57,7 @@ router.get('/:_id/addsong', function(req,res) {
       album.getArtist(
         function(err, artist) {
           album.artist = artist;
-          res.render('templates/song-add',
+          res.render('album/song-add',
                     { album : album });
         });
     });

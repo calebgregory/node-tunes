@@ -27,7 +27,7 @@ router.post('/', function(req,res) {
 });
 
 router.get('/add', function(req,res) {
-  res.render('templates/artist-add');
+  res.render('artist/add');
 });
 
 router.get('/search', function(req,res) {
@@ -46,7 +46,7 @@ router.get('/:_id', function(req,res) {
         function(err,albums){
           if(err) console.log(err);
           artist.albums = albums;
-          res.render('templates/artist',
+          res.render('artist/index',
                     { artist : artist });
         });
     });
@@ -56,7 +56,7 @@ router.get('/:_id/edit', function(req,res) {
   var _id = req.params._id;
   Artist.findById(_id, function(err,artist) {
     if(err) console.log(err);
-    res.render('templates/artist-edit',
+    res.render('artist/edit',
               { artist : artist });
   });
 });
@@ -87,8 +87,7 @@ router.get('/:_id/addalbum', function(req,res) {
   Artist.findById(req.params._id,
     function(err,artist) {
       if (err) console.log(err);
-      console.log(artist);
-      res.render('templates/artist-album-add',
+      res.render('artist/album-add',
                 { artist : artist });
     });
 });
