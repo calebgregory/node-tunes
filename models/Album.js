@@ -36,11 +36,7 @@ Album.findById = function(id,cb) {
 Album.findByArtistId = function(id,cb) {
   Album.collection.find(
     { artistId : ObjectID(id) }
-  ).toArray(
-    function(err, album) {
-      cb(err, prototyped(album));
-    }
-  );
+  ).toArray(cb);
 };
 
 module.exports = Album;
