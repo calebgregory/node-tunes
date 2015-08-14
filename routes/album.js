@@ -22,12 +22,13 @@ router.post('/', function(req,res) {
 router.get('/:_id', function(req,res) {
   Album.findById(req.params._id,
     function(err,album) {
-    Artist.findById(album.artistId,
-      function(err, artist) {
-        album.artist = artist;
-        res.render('templates/album',
-                  { album : album });
-      });
+      if(err) console.log(err);
+      album.getArtist(
+        function(err, artist) {
+          album.artist = artist;
+          res.render('templates/album',
+                    { album : album });
+        });
     });
 });
 
@@ -41,9 +42,21 @@ router.post('/add/:artistId', function(req,res) {
       album.artistId = artist._id;
       album.save(function(err,result) {
         var albumId = result.ops[0]._id;
-        res.redirect('/artists/'+req.params._id+
-                     '/album/'+albumId);
+        res.redirect('/album/'+albumId);
       });
+    });
+});
+
+router.get('/:_id/addsong', function(req,res) {
+  Album.findById(req.params._id,
+    function(err,album) {
+      if(err) console.log(err);
+      album.getArtist(
+        function(err, artist) {
+          album.artist = artist;
+          res.render('templates/song-add',
+                    { artist : artist });
+        });
     });
 });
 
