@@ -14,6 +14,8 @@ var artist = require(path.join(process.cwd(),
                               '/routes/artist'));
 var album = require(path.join(process.cwd(),
                              '/routes/album'));
+var song = require(path.join(process.cwd(),
+                            '/routes/song'));
 
 var app = express();
 if(process.env.NODE_ENV !== 'production') {
@@ -48,6 +50,7 @@ app.use(bodyParser.urlencoded({
 app.use('/', index);
 app.use('/artists', artist);
 app.use('/album', album);
+app.use('/song', song);
 app.use(express.static('www'));
 
 
