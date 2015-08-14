@@ -19,7 +19,6 @@ router.post('/', function(req,res) {
 
 router.post('/add/:albumId', function(req,res) {
   req.body.albumId = req.params.albumId;
-  console.log(req.body);
   var song = new Song(req.body);
   song.save(function(err,result) {
     var albumId = result.ops[0].albumId;
