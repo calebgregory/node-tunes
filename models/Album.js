@@ -28,7 +28,6 @@ Album.prototype.getArtist = function(cb) {
 };
 
 Album.prototype.getSongs = function(cb) {
-  console.log(this);
   Song.collection.find(
     { 'albumId' : ObjectID(this._id) }
   ).toArray(cb);
