@@ -83,13 +83,4 @@ router.post('/:_id/delete', function(req,res) {
     });
 });
 
-router.get('/:_id/addalbum', function(req,res) {
-  Artist.findById(req.params._id,
-    function(err,artist) {
-      if (err) console.log(err);
-      res.render('artist/album-add',
-                { artist : artist });
-    });
-});
-
 module.exports = router;

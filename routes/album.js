@@ -36,6 +36,14 @@ router.get('/:_id', function(req,res) {
     });
 });
 
+router.get('/add/:artistId', function(req,res) {
+  Artist.findById(req.params.artistId,
+    function(err,artist) {
+      if (err) console.log(err);
+      res.render('artist/album-add',
+                { artist : artist });
+    });
+});
 
 router.post('/add/:artistId', function(req,res) {
   Artist.findById(req.params.artistId,
