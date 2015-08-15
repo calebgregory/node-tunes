@@ -2,9 +2,12 @@ var express = require('express');
 var path = require('path');
 
 var Artist = require(path.join(process.cwd(),
-                             '/models/Artist'));
-var Album = require(path.join(process.cwd(),
-                             '/models/Album'));
+                             '/models/Artist'))
+  , Album = require(path.join(process.cwd(),
+                             '/models/Album'))
+  , Song = require(path.join(process.cwd(),
+                             '/models/Song'));
+
 var router = express.Router();
 
 router.get('/add', function(req,res) {
@@ -55,6 +58,21 @@ router.post('/add/:artistId', function(req,res) {
         var albumId = result.ops[0]._id;
         res.redirect('/album/'+albumId);
       });
+    });
+});
+
+router.post('/:_id/delete', function(req,res) {
+  var _id = req.params._id;
+  Album.findById(_id,
+    function(err,album) {
+      console.log('album:',album);
+      if(err) console.log(err);
+      album.remove(
+        function(err,result) {
+          if(err) console.log(err);
+          console.log('result-n',result.result.n);
+          res.redirect('/artists/'+album.artistId);
+        });
     });
 });
 

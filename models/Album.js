@@ -27,10 +27,21 @@ Album.prototype.getArtist = function(cb) {
     cb);
 };
 
-Album.prototype.getSongs = function(cb) {
-  Song.collection.find(
-    { 'albumId' : ObjectID(this._id) }
-  ).toArray(cb);
+Album.prototype.remove = function(cb) {
+  var my = this;
+  Song.findByAlbumId( my._id,
+    function(err,songs) {
+      // remove all the songs
+      // when finished, execute callback
+      removeAll(songs,
+        function() {
+          console.log('all songs removed');
+          console.log('this album:',my);
+          Album.collection.remove(
+            { _id : ObjectID(my._id) },
+            cb);
+        });
+    });
 };
 
 Album.findById = function(id,cb) {
@@ -51,4 +62,19 @@ module.exports = Album;
 
 function prototyped(pojo) {
   return _.create(Album.prototype, pojo);
+}
+
+function removeAll(songs,cb) {
+  if(!songs || songs.length === 0) cb();
+  songs.forEach(function(song,i,a) {
+    Song.findById(song._id,
+      function(err,s) {
+        console.log(i,': ',s);
+        s.remove(
+          function() {
+            console.log('   removed');
+            if(i === a.length - 1) cb();
+          });
+      });
+  });
 }

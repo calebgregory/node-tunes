@@ -6,16 +6,38 @@
     <h3> genre : <%= artist.genre %> </h3>
     <h5> <a href="<%= artist.wiki %>">wiki</a> </h5>
     <h3> albums : </h3>
+
     <div class="album-container">
-      <% artist.albums.forEach(function(album) { %>
-      <p>
-        <a href="/album/<%= album._id %>">
-          <%= album.name %>
-        </a>
-      </p>
-      <% }); %>
+      <table>
+        <thead>
+          <tr>
+            <th>name</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% artist.albums.forEach(function(album) { %>
+          <tr>
+            <td>
+              <a href="/album/<%= album._id %>">
+                <%= album.name %>
+              </a>
+            </td>
+            <td>
+              <form action="/album/<%= album._id %>/delete"
+                    method="POST">
+                <input type="submit" value="delete">
+              </form>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
     </div>
-    <a href='/album/add/<%= artist._id %>'>add album</a>
-    <a href='/artists'>back</a>
+
+    <div class="footer">
+      <a href='/album/add/<%= artist._id %>'>add album</a>
+      <a href='/artists'>back</a>
+    </div>
   </body>
 </html>

@@ -40,6 +40,12 @@ Song.findById = function(id,cb) {
     });
 };
 
+Song.findByAlbumId = function(id,cb) {
+  Song.collection.find(
+    { albumId : ObjectID(id) }
+  ).toArray(cb);
+};
+
 module.exports = Song;
 
 function prototyped(pojo) {
