@@ -43,7 +43,7 @@ router.post('/add/:albumId', function(req,res) {
 
 router.get('/:_id/edit', function(req,res) {
   var _id = req.params._id;
-  var song = Song.getById(_id,
+  var song = Song.findById(_id,
     function(err,song) {
       if(err) console.log(err);
       res.render('song/edit',
@@ -71,12 +71,12 @@ router.post('/:_id/delete', function(req,res) {
 router.post('/:_id/edit', function(req,res) {
   var _id = req.params._id;
   var updatedSong = req.body;
-  var song = Song.getById(_id,
+  var song = Song.findById(_id,
     function(err,song) {
       if(err) console.log(err);
       song.update(updatedSong,
         function(err,result) {
-          song.getAlbum(
+          Album.findById(song.albumId,
             function(err,album) {
               res.redirect('/album/'+album._id);
             });
