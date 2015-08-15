@@ -29,7 +29,7 @@ router.get('/:_id', function(req,res) {
       album.getArtist(
         function(err, artist) {
           album.artist = artist;
-          album.getSongs(
+          Song.findByAlbumId( album._id,
             function(err,songs) {
               album.songs = songs;
               res.render('album/index',
@@ -86,7 +86,7 @@ router.post('/:_id/delete', function(req,res) {
   //Album.findById(_id,
     //function(err,album) {
       //if(err) console.log(err);
-      //album.getSongs(
+      //Song.findByAlbumId( album._id,
         //function(err,songs) {
           //album.songs = songs;
           //album.getArtist(
