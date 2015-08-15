@@ -13,10 +13,6 @@ Object.defineProperty(Song, 'collection', {
   }
 });
 
-Song.prototype.save = function(cb) {
-  Song.collection.save(this,cb);
-};
-
 Song.prototype.getAlbum = function(cb) {
   var Album = require(path.join(process.cwd(),
                      '/models/Album'));
@@ -24,6 +20,10 @@ Song.prototype.getAlbum = function(cb) {
   Album.collection.findOne(
     { _id : ObjectID(this.albumId) },
     cb);
+};
+
+Song.prototype.save = function(cb) {
+  Song.collection.save(this,cb);
 };
 
 Song.prototype.update = function(updatedSong,cb) {
