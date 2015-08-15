@@ -58,22 +58,39 @@ router.post('/add/:artistId', function(req,res) {
     });
 });
 
-router.get('/:_id/edit', function(req,res) {
-  var _id = req.params._id;
-  Album.findById(_id,
-    function(err,album) {
-      if(err) console.log(err);
-      album.getSongs(
-        function(err,songs) {
-          album.songs = songs;
-          album.getArtist(
-            function(err,artist) {
-              album.artist = artist;
-              res.render('album/edit',
-                        { album : album });
-            });
-        });
-    });
-});
+// referenced from /views/album/index.ejs
+// not sure I want to keep this feature, as it
+// requires multiple updates of songs in a for-loop,
+// which is doable, but unsightly.
+
+//router.get('/:_id/edit', function(req,res) {
+  //var _id = req.params._id;
+  //Album.findById(_id,
+    //function(err,album) {
+      //if(err) console.log(err);
+      //album.getSongs(
+        //function(err,songs) {
+          //album.songs = songs;
+          //album.getArtist(
+            //function(err,artist) {
+              //album.artist = artist;
+              //res.render('album/edit',
+                        //{ album : album });
+            //});
+        //});
+    //});
+//});
+
+//router.post('/:_id/edit', function(req,res) {
+  //var _id = req.params._id;
+  //Album.findById(_id,
+    //function(err,album) {
+      //album.getSongs(
+        //function(err,songs) {
+          //console.log(songs);
+          //res.send(songs);
+        //});
+    //});
+//});
 
 module.exports = router;
