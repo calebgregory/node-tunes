@@ -10,11 +10,33 @@
     </h1>
     <h2> album : <%= album.name %> </h2>
     <h4>songs : </h4>
-    <ul>
-    <% album.songs.forEach(function(song) { %>
-      <li> <%= song.name %> </li>
-    <% }); %>
-    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>name</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% album.songs.forEach(function(song) { %>
+      <tr>
+        <td> <%= song.name %> </td>
+        <td>
+          <form action="/song/<%= song._id %>/edit">
+            <input type="submit" value="edit">
+          </form>
+        </td>
+        <td>
+          <form action="/song/<%= song._id %>/delete"
+                method="POST">
+            <input type="submit" value="delete">
+          </form>
+        </td>
+      </tr>
+      <% }); %>
+      </tbody>
+    </table>
     <a href="/song/add/<%= album._id %>">add songs</a>
     <a href="/album/<%= album._id %>/edit">edit</a>
     <a href="/artists/<%= album.artistId %>">back</a>
