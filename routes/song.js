@@ -51,6 +51,23 @@ router.get('/:_id/edit', function(req,res) {
     });
 });
 
+router.post('/:_id/delete', function(req,res) {
+  var _id = req.params._id;
+  Song.findById(_id,
+    function(err,song) {
+      if(err) console.log(err);
+      song.getAlbum(
+        function(err,album) {
+          if(err) console.log(err);
+          song.remove(
+            function(err,result) {
+              if(err) console.log(err);
+              res.redirect('/album/'+album._id);
+            });
+        });
+    });
+});
+
 router.post('/:_id/edit', function(req,res) {
   var _id = req.params._id;
   var updatedSong = req.body;

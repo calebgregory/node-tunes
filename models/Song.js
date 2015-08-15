@@ -13,6 +13,13 @@ Object.defineProperty(Song, 'collection', {
   }
 });
 
+Song.prototype.remove = function(cb) {
+  Song.collection.remove(
+    { _id : ObjectID(this._id) },
+    cb
+  );
+};
+
 Song.prototype.getAlbum = function(cb) {
   var Album = require(path.join(process.cwd(),
                      '/models/Album'));
@@ -34,7 +41,7 @@ Song.prototype.update = function(updatedSong,cb) {
     cb);
 };
 
-Song.getById = function(id,cb) {
+Song.findById = function(id,cb) {
   Song.collection.findOne(
     { _id : ObjectID(id) },
     function(err,song) {
