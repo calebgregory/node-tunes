@@ -13,22 +13,6 @@ Object.defineProperty(Song, 'collection', {
   }
 });
 
-Song.prototype.remove = function(cb) {
-  Song.collection.remove(
-    { _id : ObjectID(this._id) },
-    cb
-  );
-};
-
-Song.prototype.getAlbum = function(cb) {
-  var Album = require(path.join(process.cwd(),
-                     '/models/Album'));
-
-  Album.collection.findOne(
-    { _id : ObjectID(this.albumId) },
-    cb);
-};
-
 Song.prototype.save = function(cb) {
   Song.collection.save(this,cb);
 };
@@ -39,6 +23,13 @@ Song.prototype.update = function(updatedSong,cb) {
       'name' : updatedSong.name
     } },
     cb);
+};
+
+Song.prototype.remove = function(cb) {
+  Song.collection.remove(
+    { _id : ObjectID(this._id) },
+    cb
+  );
 };
 
 Song.findById = function(id,cb) {

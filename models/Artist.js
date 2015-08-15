@@ -13,6 +13,12 @@ Object.defineProperty(Artist, 'collection', {
   }
 });
 
+Artist.prototype.remove = function(cb) {
+  Artist.collection.remove(
+    { _id : this._id },
+    cb);
+};
+
 Artist.prototype.save = function(cb) {
   Artist.collection.save(this,cb);
 };
@@ -24,12 +30,6 @@ Artist.prototype.update = function(updatedArtist,cb) {
       'genre' : updatedArtist.genre,
       'wiki'  : updatedArtist.wiki
     } },
-    cb);
-};
-
-Artist.prototype.remove = function(cb) {
-  Artist.collection.remove(
-    { _id : this._id },
     cb);
 };
 
