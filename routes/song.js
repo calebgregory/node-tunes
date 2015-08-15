@@ -1,6 +1,8 @@
 var express = require('express');
 var path = require('path');
 
+var Album = require(path.join(process.cwd(),
+                             '/models/Album'));
 var Song = require(path.join(process.cwd(),
                              '/models/Song'));
 var router = express.Router();
@@ -15,6 +17,19 @@ router.post('/', function(req,res) {
     var albumId = result.ops[0].albumId;
     res.redirect('/album/'+albumId);
   });
+});
+
+router.get('/add/:albumId', function(req,res) {
+  Album.findById(req.params.albumId,
+    function(err,album) {
+      if(err) console.log(err);
+      album.getArtist(
+        function(err, artist) {
+          album.artist = artist;
+          res.render('song/add',
+                    { album : album });
+        });
+    });
 });
 
 router.post('/add/:albumId', function(req,res) {

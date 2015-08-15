@@ -50,19 +50,6 @@ router.post('/add/:artistId', function(req,res) {
     });
 });
 
-router.get('/:_id/addsong', function(req,res) {
-  Album.findById(req.params._id,
-    function(err,album) {
-      if(err) console.log(err);
-      album.getArtist(
-        function(err, artist) {
-          album.artist = artist;
-          res.render('album/song-add',
-                    { album : album });
-        });
-    });
-});
-
 router.get('/:_id/edit', function(req,res) {
   var _id = req.params._id;
   Album.findById(_id,
