@@ -19,8 +19,23 @@ router.get('/login', function(req,res) {
   res.render('user/login');
 });
 
+router.post('/login', function(req,res) {
+  var u = req.body;
+  User.login( u ,
+    function(err,user) {
+      req.session.regenerate(
+        function() {
+          req.session.user = user;
+          res.redirect('/');
+        });
+    });
+});
+
 router.get('/new', function(req,res) {
-  res.render('user/register');
+  req.session.regenerate(
+    function() {
+      res.render('user/new');
+    });
 });
 
 module.exports = router;
