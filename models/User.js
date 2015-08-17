@@ -19,13 +19,21 @@ User.prototype.save = function(cb) {
 User.create = function(u,cb) {
   if(u.password !== u.password_confirm) {
     cb('Passwords do not match');
+    return;
   }
 
-  bcrypt.hash( u.password, 8,
-    function(err,hash) {
-      u.hashedPassword = hash;
-      var user = new User(u);
-      user.save(cb);
+  User.findByEmail( u.email ,
+    function(err,user) {                   // check to ensure
+      if(Object.keys(user).length === 0) { // this email hasn't
+        bcrypt.hash( u.password, 8,        // been used before
+          function(err,hash) {
+            u.hashedPassword = hash;
+            var user = new User(u);
+            user.save(cb);
+          });
+      } else {
+        cb('User email already in use');
+      }
     });
 };
 
