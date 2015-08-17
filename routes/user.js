@@ -54,10 +54,10 @@ router.post('/login', function(req,res) {
     });
 });
 
-router.get('/new', function(req,res) {
+router.get('logout', function(req,res) {
   req.session.regenerate(
     function() {
-      res.render('user/new');
+      res.redirect('/user/login'); // or wherever
     });
 });
 
