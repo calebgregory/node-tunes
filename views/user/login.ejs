@@ -3,5 +3,23 @@
   <%- include('../templates/head', { page : 'login' }) %>
   <body>
     <h1> login </h1>
+    <form class="pure-form pure-form-stacked"
+          action="/user/login"
+          method="POST">
+      <fieldset>
+        <legend>login</legend>
+        <label for="email">email</label>
+        <input type="email"
+               name="email"
+               placeholder="your@email.com">
+        <label for="password">password</label>
+        <input type="password"
+               name="password"
+               placeholder="password">
+        <input class="pure-button pure-button-primary"
+               type="submit"
+               value="submit">
+      </fieldset>
+    </form>
   </body>
 </html>
