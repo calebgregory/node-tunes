@@ -4,6 +4,7 @@ var fs = require('fs');
 var lessCSS = require('less-middleware');
 var morgan = require('morgan');
 var path = require('path');
+var session = require('express-session');
 
 
 // define routes
@@ -16,6 +17,8 @@ var album = require(path.join(process.cwd(),
                              '/routes/album'));
 var song = require(path.join(process.cwd(),
                             '/routes/song'));
+var user = require(path.join(process.cwd(),
+                            '/routes/user'));
 
 var app = express();
 if(process.env.NODE_ENV !== 'production') {
@@ -33,6 +36,12 @@ app.set('case sensitive routing', true);
 app.locals.title = 'nodeTunes';
 
 
+app.use(session({
+  secret : 'nodetunes',
+  resave : false,
+  saveUninitialized : true
+}));
+
 app.use(lessCSS('www'));
 
 var logStream = fs.createWriteStream(
@@ -48,10 +57,12 @@ app.use(bodyParser.urlencoded({
 
 
 app.use('/', index);
+app.use('/user', user);
+app.use(express.static('www'));
+
 app.use('/artists', artist);
 app.use('/album', album);
 app.use('/song', song);
-app.use(express.static('www'));
 
 
 app.use(function(req,res,next) {
