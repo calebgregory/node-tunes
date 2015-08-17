@@ -6,6 +6,15 @@ var User = require(path.join(process.cwd(),
 
 var router = express.Router();
 
+router.post('/', function(req,res) {
+  var u = req.body;
+  User.create( u ,
+    function(err) {
+      if(err) console.log(err);
+      res.redirect('/');
+    });
+});
+
 router.get('/login', function(req,res) {
   res.render('user/login');
 });

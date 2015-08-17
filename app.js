@@ -56,9 +56,22 @@ app.use(bodyParser.urlencoded({
 }));
 
 
+app.use(function getAuthStatus(req,res,next) {
+  res.locals.user = req.session.user || null;
+  next();
+});
+
 app.use('/', index);
 app.use('/user', user);
 app.use(express.static('www'));
+
+app.use(function requireAuth(req,res,next) {
+  if(req.session.user) {
+    next();
+  } else {
+    res.redirect('/user/login');
+  }
+});
 
 app.use('/artists', artist);
 app.use('/album', album);
