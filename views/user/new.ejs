@@ -3,8 +3,11 @@
   <%- include('../templates/head', { page : 'register' }) %>
   <body>
     <h1> register </h1>
+    <% if(err) { %>
+        <p class="error"> <%= err %> </p>
+    <% } %>
     <form class="pure-form pure-form-stacked"
-          action="/user"
+          action="/user/new"
           method="POST">
       <fieldset>
         <legend>Register</legend>
