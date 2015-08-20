@@ -12,8 +12,10 @@ router.get('/add', function(req,res) {
 });
 
 router.post('/', function(req,res) {
-  var song = new Song(req.body);
+  var s = req.body;
+  var song = new Song(s);
   song.save(function(err,result) {
+    if(err) console.log(err);
     var albumId = result.ops[0].albumId;
     res.redirect('/album/'+albumId);
   });

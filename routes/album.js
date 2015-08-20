@@ -15,7 +15,8 @@ router.get('/add', function(req,res) {
 });
 
 router.post('/', function(req,res) {
-  var album = new Album(req.body);
+  var a = req.body;
+  var album = new Album(a);
   album.save(function(err,result) {
     var albumId = result.ops[0]._id;
     res.redirect('/album/'+albumId);
