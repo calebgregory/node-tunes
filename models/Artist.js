@@ -2,9 +2,10 @@ var ObjectID = require('mongodb').ObjectID
   , _ = require('lodash');
 
 function Artist(a) {
-  this.name  = a.name;
-  this.genre = a.genre;
-  this.wiki  = a.wiki;
+  this.name   = a.name;
+  this.genre  = a.genre;
+  this.wiki   = a.wiki;
+  this.userId = ObjectID(a.userId);
 }
 
 Object.defineProperty(Artist, 'collection', {
@@ -46,8 +47,10 @@ Artist.findByName = function(query,cb) {
     .toArray(cb);
 };
 
-Artist.findAll = function(cb) {
-  Artist.collection.find().toArray(
+Artist.findByUserId = function(id,cb) {
+  Artist.collection.find({
+    userId : ObjectID(id)
+  }).toArray(
     function(err,artists) {
       var prototypedArtists =
         artists.map(function(artist) {

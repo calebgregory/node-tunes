@@ -10,15 +10,20 @@ var Album = require(path.join(process.cwd(),
 var router = express.Router();
 
 router.get('/', function(req,res) {
-  Artist.findAll(function(err,artists) {
-    if(err) console.log(err);
-    res.render('templates/index',
-              { artists : artists });
-  });
+  var _id = req.session.user._id;
+  console.log(_id);
+  Artist.findByUserId( _id ,
+    function(err,artists) {
+      if(err) console.log(err);
+      res.render('templates/index',
+                  { artists : artists });
+    });
 });
 
 router.post('/', function(req,res) {
-  var artist = new Artist(req.body);
+  var a = req.body;
+  a.userId = req.session.user._id;
+  var artist = new Artist(a);
   artist.save(function(err) {
     if(err) console.log(err);
     res.redirect('/artists');
