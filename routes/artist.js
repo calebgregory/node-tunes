@@ -15,7 +15,7 @@ router.get('/', function(req,res) {
   Artist.findByUserId( _id ,
     function(err,artists) {
       if(err) console.log(err);
-      res.render('templates/index',
+      res.render('index',
                   { artists : artists });
     });
 });
