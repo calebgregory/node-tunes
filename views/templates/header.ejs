@@ -1,0 +1,39 @@
+<header>
+  <div class="pure-menu pure-menu-horizontal">
+    <a class="pure-menu-heading pure-menu-link"
+       href="/">
+      <img src="/images/music_icon_40pct.jpg">
+    </a>
+    <ul class="pure-menu-list">
+      <li class="pure-menu-item">
+        <a class="pure-menu-link" href="/">
+          home
+        </a>
+      </li>
+    <% if(!user) { %>
+      <li class="pure-menu-item">
+      <% if(page === 'register') { %>
+        <a class="pure-menu-link" href="/user/login">
+          sign in
+        </a>
+      <% } else { %>
+        <a class="pure-menu-link" href="/user/new">
+          sign up
+        </a>
+      <% } %>
+      </li>
+    <% } else { %>
+      <li class="pure-menu-item">
+        <a class="pure-menu-link" href="/artists">
+          artists
+        </a>
+      </li>
+      <li class="pure-menu-item">
+        <a class="pure-menu-link" href="/user/logout">
+          logout
+        </a>
+      </li>
+    <% } %>
+    </ul>
+  </div>
+</header>
