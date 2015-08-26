@@ -11,17 +11,30 @@
         </a>
       </li>
     <% if(!user) { %>
-      <li class="pure-menu-item">
       <% if(page === 'register') { %>
-        <a class="pure-menu-link" href="/user/login">
-          sign in
-        </a>
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/user/login">
+            sign in
+          </a>
+        </li>
+      <% } else if(page === 'home') { %>
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/user/login">
+            sign in
+          </a>
+        </li>
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/user/new">
+            sign up
+          </a>
+        </li>
       <% } else { %>
-        <a class="pure-menu-link" href="/user/new">
-          sign up
-        </a>
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="/user/new">
+            sign up
+          </a>
+        </li>
       <% } %>
-      </li>
     <% } else { %>
       <li class="pure-menu-item">
         <a class="pure-menu-link" href="/artists">
