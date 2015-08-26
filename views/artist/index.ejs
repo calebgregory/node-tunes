@@ -2,13 +2,26 @@
 <html>
   <%- include('../templates/head', { page : artist.name }); %>
   <body>
-    <h1> name : <%= artist.name %> </h1>
-    <h3> genre : <%= artist.genre %> </h3>
-    <h5> <a href="<%= artist.wiki %>">wiki</a> </h5>
-    <h3> albums : </h3>
+    <%- include('../templates/header', { page : 'name : '+ artist.name }) %>
 
-    <div class="album-container">
-      <table>
+    <div class="centered">
+      <div class="clearfix">
+        <div class="information">
+          <h1 class="title"><%= artist.name %></h1>
+          <h3> genre : <span class="designation"><%= artist.genre %></span></h3>
+          <h2> albums : </h2>
+        </div>
+        <div class="links">
+          <div class="options pure-menu pure-menu-horizontal">
+            <ul class="pure-menu-list">
+              <li class="pure-menu-item"><a class="pure-menu-link" href="<%= artist.wiki %>">wiki</a></li>
+              <li class="pure-menu-item"><a class="pure-menu-link" href='/album/add/<%= artist._id %>'>add album</a></li>
+              <li class="pure-menu-item"><a class="pure-menu-link back" href='/artists'>back</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <table class="pure-table pure-table-horizontal">
         <thead>
           <tr>
             <th>name</th>
@@ -26,7 +39,7 @@
             <td>
               <form action="/album/<%= album._id %>/delete"
                     method="POST">
-                <input type="submit" value="delete">
+                <input type="submit" class="delete" value="delete">
               </form>
             </td>
           </tr>
@@ -35,9 +48,5 @@
       </table>
     </div>
 
-    <div class="footer">
-      <a href='/album/add/<%= artist._id %>'>add album</a>
-      <a href='/artists'>back</a>
-    </div>
   </body>
 </html>

@@ -2,46 +2,53 @@
 <html>
   <%- include('../templates/head', { page : album.name }); %>
   <body>
-    <h1>
-      artist : <a
-        href="/artists/<%= album.artistId %>">
-        <%= album.artist.name %>
-      </a>
-    </h1>
-    <h2> album : <%= album.name %> </h2>
-    <h4>songs : </h4>
-    <table>
-      <thead>
+    <%- include('../templates/header', { page : null }) %>
+    <div class="centered">
+      <div class="clearfix">
+        <div class="information">
+          <h1>
+            artist : <a
+              href="/artists/<%= album.artistId %>">
+              <%= album.artist.name %>
+            </a>
+          </h1>
+          <h2> album : <%= album.name %> </h2>
+          <h4>songs : </h4>
+        </div>
+        <div class="links">
+          <div class="options pure-menu pure-menu-horizontal">
+            <li class="pure-menu-item"><a class="pure-menu-link" href="/song/add/<%= album._id %>">add songs</a></li>
+            <li class="pure-menu-item"><a class="pure-menu-link back" href="/artists/<%= album.artistId %>">back</a></li>
+          </div>
+        </div>
+      </div>
+      <table class="pure-table pure-table-horizontal">
+        <thead>
+          <tr>
+            <th>name</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% album.songs.forEach(function(song) { %>
         <tr>
-          <th>name</th>
-          <th></th>
-          <th></th>
+          <td> <%= song.name %> </td>
+          <td>
+            <form action="/song/<%= song._id %>/edit">
+              <input type="submit" class="edit" value="edit">
+            </form>
+          </td>
+          <td>
+            <form action="/song/<%= song._id %>/delete"
+                  method="POST">
+              <input type="submit" class="delete" value="delete">
+            </form>
+          </td>
         </tr>
-      </thead>
-      <tbody>
-      <% album.songs.forEach(function(song) { %>
-      <tr>
-        <td> <%= song.name %> </td>
-        <td>
-          <form action="/song/<%= song._id %>/edit">
-            <input type="submit" value="edit">
-          </form>
-        </td>
-        <td>
-          <form action="/song/<%= song._id %>/delete"
-                method="POST">
-            <input type="submit" value="delete">
-          </form>
-        </td>
-      </tr>
-      <% }); %>
-      </tbody>
-    </table>
-    <a href="/song/add/<%= album._id %>">add songs</a>
-    <!-- not sure about this
-    <a href="/album/<%= album._id %>/edit">edit</a>
-    -->
-    <a href="/artists/<%= album.artistId %>">back</a>
-    <a href="/">main page</a>
+        <% }); %>
+        </tbody>
+      </table>
+    </div>
   </body>
 </html>

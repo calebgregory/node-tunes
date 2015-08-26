@@ -1,0 +1,123 @@
+// variables
+@leaf-green:         #116644;
+@grey-leaf-green:    #559977;
+@soft-purple:        #ffeeff;
+@soft-pink:          #ffccdd;
+@blush:              #eeaaaa;
+@skin:               #ffeeee;
+@ugly-pink:          #ffbbdd;
+@salmon-pink:        #ff7799;
+@kelly-green:        #008844;
+@bluish-kelly-green: #33aa77;
+
+// general
+
+.hover {
+  color: @bluish-kelly-green;
+  font-style: oblique;
+}
+
+// selectors
+
+body, html {
+  background: #fff;
+  margin: 0;
+  height: 100%;
+}
+
+a {
+  color: @grey-leaf-green;
+  text-decoration: none;
+  &.back { color: @ugly-pink; }
+  &:hover { .hover }
+}
+
+input.fill {
+  width: 100%;
+}
+
+select.fill {
+  width: 100%;
+}
+
+input[type="submit"] {
+  &:hover { .hover }
+  &.delete, &.edit {
+    background: none;
+    border: none;
+    color: #777;
+  }
+}
+
+button {
+  &.auth, &.submission {
+    text-align: right;
+    background: @bluish-kelly-green;
+    color: #fff;
+    &:hover {
+      color: @soft-purple;
+    }
+  }
+  &.bump-down {
+    margin: 15px 0 0;
+  }
+}
+
+.information {
+  display: block;
+  float: left;
+}
+
+.links {
+  display: block;
+  float: right;
+  height: 100%;
+}
+
+.title {
+  color: @salmon-pink;
+}
+
+.designation {
+  color: @leaf-green;
+}
+
+.centered {
+  @media (max-width: 569px) {
+    width: 100%;
+  }
+  @media (min-width: 570px) {
+    width: 70%;
+    margin: 0 15%;
+  }
+  .options {
+    text-align: right;
+  }
+  table {
+    width: 100%;
+    border: 0;
+    .hide-sm {
+      @media (max-width: 870px) {
+        display: none;
+      }
+    }
+  }
+}
+
+select#selected-artist {
+  height: 100px;
+}
+
+.clearfix {
+  display: block;
+  zoom: 1;
+
+  &:after {
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}

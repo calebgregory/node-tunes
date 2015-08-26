@@ -2,19 +2,37 @@
 <html>
   <%- include('../templates/head', { page : artist.name }); %>
   <body>
-    <h1> edit <%= artist.name %> </h1>
-    <form action='/artists/<%= artist._id %>/edit'
+    <%- include('../templates/header', { page : 'edit : '+ artist.name }) %>
+    <form class="pure-form pure-form-aligned"
+          action='/artists/<%= artist._id %>/edit'
           method='POST'>
-      name : <input type="text"
-                    name="name"
-                    value="<%= artist.name %>">
-      genre : <input type="text"
-                     name="genre"
-                     value="<%= artist.genre %>">
-      wiki : <input type="text"
-                    name="wiki"
-                    value="<%= artist.wiki %>">
-      <input type="submit" value="submit">
+      <div class="pure-control-group">
+        <label for="name">Name</label>
+        <input id="name"
+               type="text"
+               name="name"
+               value="<%= artist.name %>">
+      </div>
+      <div class="pure-control-group">
+        <label for="genre">Genre</label>
+        <input id="genre"
+               type="text"
+               name="genre"
+               value="<%= artist.genre %>">
+      </div>
+      <div class="pure-control-group">
+        <label for="wiki">Wiki</label>
+        <input id="wiki"
+               type="url"
+               name="wiki"
+               value="<%= artist.wiki %>">
+      </div>
+      <div class="pure-controls">
+        <button type="submit"
+                class="pure-button pure-button-primary">
+          Submit
+        </button>
+      </div>
     </form>
   </body>
 </html>

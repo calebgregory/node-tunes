@@ -2,20 +2,50 @@
 <html>
   <%- include('../templates/head', { page : 'add artist' }); %>
   <body>
-    <h1> artists </h1>
-    <a href="/artists">back</a>
-    <form action="/artists"
-          method="POST">
-      name: <input type="text"
+    <%- include('../templates/header', { page : 'add artist' }) %>
+    <div class="centered">
+      <div class="clearfix">
+        <div class="information">
+          <h1 class="title">add artist</h1>
+        </div>
+        <div class="links">
+          <div class="options pure-menu pure-menu-horizontal">
+            <ul class="pure-menu-list">
+              <li class="pure-menu-item"><a class="pure-menu-link back" href="/artists">back</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <form action="/artists"
+            method="POST"
+            class="pure-form pure-form-aligned">
+        <fieldset>
+          <div class="pure-control-group">
+            <label for="name">Name</label>
+            <input type="text"
+                   id="name"
                    name="name"
                    placeholder="name">
-      genre: <input type="text"
-                    name="genre"
-                    placeholder="genre">
-      wiki: <input type="url"
+          </div>
+          <div class="pure-control-group">
+            <label for="genre">Genre</label>
+            <input type="text"
+                   id="genre"
+                   name="genre"
+                   placeholder="genre">
+          </div>
+          <div class="pure-control-group">
+            <label for="wiki">Wiki</label>
+            <input type="url"
+                   id="wiki"
                    name="wiki"
                    placeholder="wikipedia.org/">
-      <input type="submit" value="submit">
-    </form>
+          </div>
+          <div class="pure-controls">
+            <button type="submit" class="pure-button submission">Submit</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
   </body>
 </html>
