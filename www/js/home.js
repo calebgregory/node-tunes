@@ -8,7 +8,6 @@ var changeFrame = (f,numFrames) => {
 
 $(window).resize(() => {
   var w = $(window).width();
-  console.log('width:',w);
   var len = $('pre').length; // number of frames
   var p = 1200; // pixel value of first frame [0]
 
