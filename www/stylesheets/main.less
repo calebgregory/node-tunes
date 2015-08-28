@@ -20,7 +20,8 @@
 // selectors
 
 body, html {
-  background: #fff;
+  background: #333;
+  color: @blush;
   margin: 0;
   height: 100%;
 }
@@ -30,6 +31,11 @@ a {
   text-decoration: none;
   &.back { color: @ugly-pink; }
   &:hover { .hover }
+}
+
+pre {
+  font-family: Menlo;
+  border-right: 1px solid;
 }
 
 input.fill {
