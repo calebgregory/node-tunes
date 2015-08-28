@@ -20,7 +20,7 @@ var song = require(path.join(process.cwd(),
 var user = require(path.join(process.cwd(),
                             '/routes/user'));
 
-var app = express();
+var app = module.exports = express();
 if(process.env.NODE_ENV !== 'production') {
   require(path.join(process.cwd(),
                     '/lib/secrets'));
