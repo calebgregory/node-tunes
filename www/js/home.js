@@ -13,43 +13,43 @@ $(window).resize(() => {
 
   if(w >= p) {
 
-    $('#frame-0').show();
     hideOtherFrames(0,len);
 
   } else if(w >= p - 60) {
 
-    $('#frame-1').show();
     hideOtherFrames(1,len);
 
   } else if(w >= p - 120) {
 
-    $('#frame-2').show();
     hideOtherFrames(2,len);
+
+  } else if(w >= p - 140) {
+
+    hideOtherFrames(3,len);
 
   } else if(w >= p - 160) {
 
-    $('#frame-3').show();
-    hideOtherFrames(3,len);
+    hideOtherFrames(4,len);
 
   } else if(w >= p - 200) {
 
-    $('#frame-4').show();
-    hideOtherFrames(4,len);
+    hideOtherFrames(5,len);
 
   } else if(w >= p - 220) {
 
-    $('#frame-5').show();
-    hideOtherFrames(5,len);
+    hideOtherFrames(6,len);
 
   } else if(w >= p - 240) {
 
-    $('#frame-6').show();
-    hideOtherFrames(6,len);
-
-  } else if(w >= p - 360) {
-
-    $('#frame-7').show();
     hideOtherFrames(7,len);
+
+  } else if(w >= p - 260) {
+
+    hideOtherFrames(8,len);
+
+  } else if(w >= p - 280) {
+
+    hideOtherFrames(9,len);
 
   }
 });
