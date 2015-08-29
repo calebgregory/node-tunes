@@ -92,6 +92,38 @@ $(window).resize(() => {
 
     changeFrame(19,len);
 
+  } else if(w >= p - 460) {
+
+    changeFrame(20,len);
+
+  } else if(w >= p - 480) {
+
+    changeFrame(21,len);
+
+  } else if(w >= p - 500) {
+
+    changeFrame(22,len);
+
+  } else if(w >= p - 520) {
+
+    changeFrame(23,len);
+
+  } else if(w >= p - 540) {
+
+    changeFrame(24,len);
+
+  } else if(w >= p - 560) {
+
+    changeFrame(25,len);
+
+  } else if(w >= p - 580) {
+
+    changeFrame(26,len);
+
+  } else if(w >= p - 600) {
+
+    changeFrame(27,len);
+
   }
 });
 
