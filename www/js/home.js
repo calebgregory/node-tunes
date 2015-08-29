@@ -3,6 +3,7 @@ var changeFrame = (f,numFrames) => {
   for (var i = 0; i < numFrames; i++) {
     if(i !== f) $(`#frame-${i}`).hide();
   }
+  $('#frame-number').text(f);
   console.log(`change to ${f}`);
 }
 
@@ -19,69 +20,77 @@ $(window).resize(() => {
 
     changeFrame(1,len);
 
-  } else if(w >= p - 120) {
+  } else if(w >= p - 80) {
 
     changeFrame(2,len);
 
-  } else if(w >= p - 140) {
+  } else if(w >= p - 100) {
 
     changeFrame(3,len);
 
-  } else if(w >= p - 160) {
+  } else if(w >= p - 120) {
 
     changeFrame(4,len);
 
-  } else if(w >= p - 200) {
+  } else if(w >= p - 140) {
 
     changeFrame(5,len);
 
-  } else if(w >= p - 220) {
+  } else if(w >= p - 160) {
 
     changeFrame(6,len);
 
-  } else if(w >= p - 240) {
+  } else if(w >= p - 200) {
 
     changeFrame(7,len);
 
-  } else if(w >= p - 260) {
+  } else if(w >= p - 220) {
 
     changeFrame(8,len);
 
-  } else if(w >= p - 280) {
+  } else if(w >= p - 240) {
 
     changeFrame(9,len);
 
-  } else if(w >= p - 300) {
+  } else if(w >= p - 260) {
 
     changeFrame(10,len);
 
-  } else if(w >= p - 320) {
+  } else if(w >= p - 280) {
 
     changeFrame(11,len);
 
-  } else if(w >= p - 340) {
+  } else if(w >= p - 300) {
 
     changeFrame(12,len);
 
-  } else if(w >= p - 360) {
+  } else if(w >= p - 320) {
 
     changeFrame(13,len);
 
-  } else if(w >= p - 380) {
+  } else if(w >= p - 340) {
 
     changeFrame(14,len);
 
-  } else if(w >= p - 400) {
+  } else if(w >= p - 360) {
 
     changeFrame(15,len);
 
-  } else if(w >= p - 420) {
+  } else if(w >= p - 380) {
 
     changeFrame(16,len);
 
-  } else if(w >= p - 440) {
+  } else if(w >= p - 400) {
 
     changeFrame(17,len);
+
+  } else if(w >= p - 420) {
+
+    changeFrame(18,len);
+
+  } else if(w >= p - 440) {
+
+    changeFrame(19,len);
 
   }
 });
