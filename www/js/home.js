@@ -40,87 +40,87 @@ $(window).resize(() => {
 
     changeFrame(6,len);
 
-  } else if(w >= p - 200) {
+  } else if(w >= p - 180) {
 
     changeFrame(7,len);
 
-  } else if(w >= p - 220) {
+  } else if(w >= p - 200) {
 
     changeFrame(8,len);
 
-  } else if(w >= p - 240) {
+  } else if(w >= p - 220) {
 
     changeFrame(9,len);
 
-  } else if(w >= p - 260) {
+  } else if(w >= p - 240) {
 
     changeFrame(10,len);
 
-  } else if(w >= p - 280) {
+  } else if(w >= p - 260) {
 
     changeFrame(11,len);
 
-  } else if(w >= p - 300) {
+  } else if(w >= p - 280) {
 
     changeFrame(12,len);
 
-  } else if(w >= p - 320) {
+  } else if(w >= p - 300) {
 
     changeFrame(13,len);
 
-  } else if(w >= p - 340) {
+  } else if(w >= p - 320) {
 
     changeFrame(14,len);
 
-  } else if(w >= p - 360) {
+  } else if(w >= p - 340) {
 
     changeFrame(15,len);
 
-  } else if(w >= p - 380) {
+  } else if(w >= p - 360) {
 
     changeFrame(16,len);
 
-  } else if(w >= p - 400) {
+  } else if(w >= p - 380) {
 
     changeFrame(17,len);
 
-  } else if(w >= p - 420) {
+  } else if(w >= p - 400) {
 
     changeFrame(18,len);
 
-  } else if(w >= p - 440) {
+  } else if(w >= p - 420) {
 
     changeFrame(19,len);
 
-  } else if(w >= p - 460) {
+  } else if(w >= p - 440) {
 
     changeFrame(20,len);
 
-  } else if(w >= p - 480) {
+  } else if(w >= p - 460) {
 
     changeFrame(21,len);
 
-  } else if(w >= p - 500) {
+  } else if(w >= p - 480) {
 
     changeFrame(22,len);
 
-  } else if(w >= p - 520) {
+  } else if(w >= p - 500) {
 
     changeFrame(23,len);
 
-  } else if(w >= p - 540) {
+  } else if(w >= p - 520) {
 
     changeFrame(24,len);
 
-  } else if(w >= p - 560) {
+  } else if(w >= p - 540) {
 
     changeFrame(25,len);
 
-  } else if(w >= p - 580) {
+  } else if(w >= p - 560) {
 
     changeFrame(26,len);
 
-  } else if(w >= p - 600) {
+  } else if(w >= p - 580) {
 
     changeFrame(27,len);
 
