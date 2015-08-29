@@ -124,6 +124,34 @@ $(window).resize(() => {
 
     changeFrame(27,len);
 
+  } else if(w >= p - 600) {
+
+    changeFrame(28,len);
+
+  } else if(w >= p - 620) {
+
+    changeFrame(29,len);
+
+  } else if(w >= p - 640) {
+
+    changeFrame(30,len);
+
+  } else if(w >= p - 660) {
+
+    changeFrame(31,len);
+
+  } else if(w >= p - 680) {
+
+    changeFrame(32,len);
+
+  } else if(w >= p - 700) {
+
+    changeFrame(33,len);
+
+  } else if(w >= p - 720) {
+
+    changeFrame(34,len);
+
   }
 });
 
