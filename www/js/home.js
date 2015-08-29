@@ -152,6 +152,10 @@ $(window).resize(() => {
 
     changeFrame(34,len);
 
+  } else if(w >= p - 740) {
+
+    changeFrame(35,len);
+
   }
 });
 
