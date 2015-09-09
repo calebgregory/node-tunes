@@ -61,9 +61,9 @@ app.use(function getAuthStatus(req,res,next) {
   next();
 });
 
+app.use(express.static('www'));
 app.use('/', index);
 app.use('/user', user);
-app.use(express.static('www'));
 
 app.use(function requireAuth(req,res,next) {
   if(req.session.user) {
