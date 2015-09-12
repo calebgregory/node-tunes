@@ -52,10 +52,13 @@ project. Well, that and coming up with this
 - Better styling
 - More complete and performant ASCII animation
 
-The styling on this guy is pretty thrown together. If you found the
-ASCII animation on your own, that's awesome! If you haven't yet, it
-shouldn't be hard to find. I worked on that for probably too long of a
-time. The way it works currently is by using `$('').hide()` and `$().show()` on `pre` elements containing each frame in a for-loop that gets called on `window.resize`. _Woof_. That was a definite first-draft solution to the problem, and I never got around to separating my concerns into an event -> state -> render loop pattern. What this means is that you'll get a rainbow wheel for your cursor after resizing the window for a few seconds. That's not a CSS-selected cursor - definitely a browser thing. _Cheers to Version 2!_
+The styling on this guy is pretty thrown together. My goals for the
+project had nothing to do with styling, so it was not a big priority.
+If you found the ASCII animation on your own, that's awesome! If you haven't yet, it
+shouldn't be too hard to find. I worked on that for probably way too
+long.
+
+The way it works currently is by using `$('someEl').show()` and `$('allTheOtherEls').hide()` on `pre` elements containing each frame. This happens in a for-loop that gets called on `window.resize`. _Woof_. What this means is that you'll get a rainbow wheel for your cursor after resizing the window for a few seconds. That's not a CSS-selected cursor - yep, definitely a browser thing. This was a first-draft solution to the problem, and I never got around to separating my concerns into an event -> state -> render loop pattern with an array storing the frames as views. So it goes. _Cheers to Version 2!_
 
 # License
 The MIT License (MIT)
