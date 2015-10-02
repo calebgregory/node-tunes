@@ -72,13 +72,29 @@ button {
 .logo {
   margin-left: 13%;
   margin-top: 10px;
+
+  @media (max-width: 640px) {
+    display: none;
+    img {
+      display: none;
+    }
+  }
+
 }
 
 .menu {
-  display: block;
-  float: right;
-  margin-right: 15%;
+  margin-left: 50%;
+
   margin-top: 45px;
+
+  @media (max-width: 925px) and (min-width: 480px) {
+    margin-left: 30%;
+  }
+
+  @media (max-width: 480px) {
+    margin-left: 0;
+  }
+
 }
 
 .information {
